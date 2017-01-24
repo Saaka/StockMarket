@@ -5,10 +5,13 @@
   },
 
   "dependencies": {
+    "Autofac": "4.3.0",
     "Microsoft.NETCore.App": {
       "type": "platform",
       "version": "1.0.1"
-    }
+    },
+    "NLog.Extensions.Logging": "1.0.0-*",
+    "StockMarket.Core": "1.0.0-preview2-003131"
   },
 
   "frameworks": {

@@ -1,0 +1,1 @@
+2017-01-24 20:44:07.7358|INFO|NLogAppLogger|First info
