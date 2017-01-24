@@ -1,13 +1,14 @@
 ﻿{
   "version": "1.0.0-preview2-003131",
   "buildOptions": {
-    "emitEntryPoint": true
+    "emitEntryPoint": true,
+    "copyToOutput": { "includeFiles": [ "NLog.config", "config.json" ] }
   },
 
   "dependencies": {
     "Autofac": "4.3.0",
     "Microsoft.NETCore.App": {
-      "type": "platform",
+      //"type": "platform",
       "version": "1.0.1"
     },
     "NLog.Extensions.Logging": "1.0.0-*",
@@ -18,5 +19,8 @@
     "netcoreapp1.0": {
       "imports": "dnxcore50"
     }
+  },
+  "runtimes": {
+    "win10-x64": {}
   }
 }

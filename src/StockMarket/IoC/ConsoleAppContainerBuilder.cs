@@ -12,12 +12,8 @@ namespace StockMarket.IoC
         public IContainer BuildContainer()
         {
             ContainerBuilder builder = new ContainerBuilder();
-
-            builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
-                .AsImplementedInterfaces()
-                .AsSelf();
-
-            builder.RegisterAssemblyTypes(typeof(Core.Logger.NLogAppLogger).GetTypeInfo().Assembly)
+            
+            builder.RegisterAssemblyTypes(typeof(StockMarket.Core.Configuration.AppConfiguration).GetTypeInfo().Assembly)
                 .AsImplementedInterfaces()
                 .AsSelf();
 

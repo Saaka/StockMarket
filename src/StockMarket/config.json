@@ -1,0 +1,10 @@
+﻿{
+  "interval": 60,
+  "stocks": [
+    "WIG",
+    "WIG20",
+    "FW20",
+    "MWIG40",
+    "SWIG80"
+  ]
+}
