@@ -28,7 +28,7 @@ namespace StockMarket.Core.Configuration
 
         private void CreateDefaultConfigFile(string filePath)
         {
-            string file = JsonConvert.SerializeObject(new AppConfiguration()
+            var file = JsonConvert.SerializeObject(new AppConfiguration
             {
                 Interval = 60,
                 Stocks = new[] { "WIG", "WIG20", "FW20", "MWIG40", "SWIG80" }

@@ -1,6 +1,10 @@
-﻿using System;
+﻿using NLog.Config;
+using NLog.Targets;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace StockMarket.Core.Logger
@@ -11,7 +15,9 @@ namespace StockMarket.Core.Logger
 
         public NLogAppLogger()
         {
-            var config = NLog.LogManager.Configuration;
+            if (!File.Exists(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "NLog.config")))
+                CreateDefaultConfig();
+
             logger = NLog.LogManager.GetCurrentClassLogger();
         }
 
@@ -33,6 +39,21 @@ namespace StockMarket.Core.Logger
         public void Warning(string warning)
         {
             logger.Warn(warning);
+        }
+
+        private void CreateDefaultConfig()
+        {
+            var config = new LoggingConfiguration();
+            var target = new ConsoleTarget
+            {
+                Layout = @"${date:format=yyyy-MM-dd HH\:mm\:ss} ${level}: ${message}"
+            };
+            var rule = new LoggingRule("*", NLog.LogLevel.Info, target);
+
+            config.AddTarget("console", target);
+            config.LoggingRules.Add(rule);
+
+            NLog.LogManager.Configuration = config;
         }
     }
 }
