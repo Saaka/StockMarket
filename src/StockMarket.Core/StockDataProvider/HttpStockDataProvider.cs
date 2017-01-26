@@ -23,7 +23,7 @@ namespace StockMarket.Core.StockDataProvider
                 using (HttpResponseMessage response = await httpClient.GetAsync(GetRequestUrl(stockName)))
                 {
                     if (!response.IsSuccessStatusCode)
-                        throw new StockProviderException();
+                        throw new StockProviderException($"Stock data provider was unable to get valid response for {stockName}");
 
                     string result = await response.Content.ReadAsStringAsync();
                     stockValidator.ValidateStock(stockName, result);
