@@ -19,7 +19,9 @@ namespace StockMarket.IntegrationTests
 
             var result = await stockProvider.GetStockData(stockName);
 
-            Assert.True(true);
+            Assert.Contains(stockName, result);
+            Assert.Contains("Symbol,Data,Czas,Otwarcie,Najwyzszy,Najnizszy,Zamkniecie,Wolumen", result);
+            Assert.DoesNotContain($"{stockName.ToUpper()},B/D,B/D,B/D,B/D,B/D,B/D,B/D", result);
         }
 
         [Theory]

@@ -10,7 +10,7 @@ namespace StockMarket.Core.Configuration
 {
     public class JsonFileAppConfigurationProvider : IAppConfigurationProvider
     {
-        private IConfigurationRoot configuration;
+        private readonly IConfigurationRoot configuration;
 
         public JsonFileAppConfigurationProvider()
         {
@@ -23,7 +23,7 @@ namespace StockMarket.Core.Configuration
 
         public IAppConfiguration GetConfiguration()
         {
-            AppConfiguration config = new AppConfiguration();
+            var config = new AppConfiguration();
             ConfigurationBinder.Bind(configuration, config);
 
             return config;

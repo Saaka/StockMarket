@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Autofac;
 using StockMarket.Core.Logger;
 using StockMarket.Core.Configuration;
+using StockMarket.Core;
 
 namespace StockMarket
 {
@@ -18,15 +19,25 @@ namespace StockMarket
                 using (var lifetimescope = container.BeginLifetimeScope())
                 {
                     var logger = lifetimescope.Resolve<IAppLogger>();
-                    var config = lifetimescope.Resolve<IAppConfigurationProvider>();
+                    var stockMarketExecutor = lifetimescope.Resolve<IStockMarketActionExecutor>();
 
-                    logger.Info(config.GetConfiguration().Interval.ToString());
-                    while (Console.ReadLine() != "quit")
+                    try
                     {
-                        logger.Info(config.GetConfiguration().Interval.ToString());
+                        stockMarketExecutor.RunStockMarket();
+                        while (Console.ReadLine() != "quit")
+                        {
+                            logger.Info("Program terminated");
+                            return;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error(ex);
+                        Console.WriteLine("Press enter key to exit");
+                        Console.ReadLine();
                     }
                 }
-            }            
+            }
         }
     }
 }

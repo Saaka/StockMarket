@@ -14,32 +14,6 @@ namespace StockMarket.IntegrationTests
     public class LocalFileStockStorageTests
     {
         [Fact]
-        public async Task ShouldSaveStockToNewFile()
-        {
-            CleanDirectory();
-            var stock = GetValidStockValue();
-            var storage = GetStorage();
-
-            await storage.SaveStockValue(stock);
-
-            Assert.True(true);
-        }
-
-        [Fact]
-        public async Task ShouldSaveStockToNewFileAndAppendNextValue()
-        {
-            CleanDirectory();
-            var stock1 = GetValidStockValue();
-            var stock2 = GetValidStockValue();
-            var storage = GetStorage();
-
-            await storage.SaveStockValue(stock1);
-            await storage.SaveStockValue(stock2);
-
-            Assert.True(true);
-        }
-
-        [Fact]
         public async Task ShouldLoadLastSavedValue()
         {
             CleanDirectory();

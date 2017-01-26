@@ -20,6 +20,11 @@ namespace StockMarket.Core.Logger
             logger.Error(error);
         }
 
+        public void Error(Exception exception)
+        {
+            logger.Error(exception.Message);
+        }
+
         public void Info(string info)
         {
             logger.Info(info);

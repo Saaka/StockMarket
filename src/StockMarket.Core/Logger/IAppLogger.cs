@@ -8,7 +8,8 @@ namespace StockMarket.Core.Logger
     public interface IAppLogger
     {
         void Info(string info);
-        void Error(string error);
         void Warning(string warning);
+        void Error(string error);
+        void Error(Exception exception);
     }
 }
