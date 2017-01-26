@@ -30,8 +30,8 @@ namespace StockMarket.UnitTests
 
         [Theory]
         [InlineData("dummy", "2017-01-27 16:25:15;17,5", "2017-01-27 16:25:15", "17,5")]
-        [InlineData("dummy", "2017-01-26 12:30:15;0", "2017-01-26 12:30:15", "0")]
-        [InlineData("dummy", "2017-01-26 01:20:15;2256,5", "2017-01-26 01:20:15", "2256,5")]
+        [InlineData("dummy1", "2017-01-26 12:30:15;0", "2017-01-26 12:30:15", "0")]
+        [InlineData("dummy2", "2017-01-26 01:20:15;2256,5", "2017-01-26 01:20:15", "2256,5")]
         public void ShouldReturnValidParsedValues(string stockName, string stockData, DateTime dateExpected, decimal valueExpected)
         {
             var parser = CreateParser();

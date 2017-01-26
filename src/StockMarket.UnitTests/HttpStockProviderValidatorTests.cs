@@ -50,12 +50,10 @@ namespace StockMarket.UnitTests
         [Theory]
         [InlineData("Symbol,Data,Czas,Otwarcie,Najwyzszy,Najnizszy,Zamkniecie,Wolumen\r\nWIG20,2017-01-26,13:04:30,2086.78,2093.05,2074.26,2085.11,17359111")]
         [InlineData("Symbol,Data,Czas,Otwarcie,Najwyzszy,Najnizszy,Zamkniecie,Wolumen\r\nWIG,2017-01-26,13:04:30,2086.78,2093.05,2074.26,2085,17359111")]
-        public void ShouldBeValidatedProperly(string invalidResult)
+        public void ShouldBeValidatedProperly(string validResult)
         {
             var validator = CreateStockProviderValidator();
-            validator.ValidateStock("DummyStock", invalidResult);
-
-            Assert.True(true);
+            validator.ValidateStock("DummyStock", validResult);
         }
 
         private IStockDataProviderValidator CreateStockProviderValidator()

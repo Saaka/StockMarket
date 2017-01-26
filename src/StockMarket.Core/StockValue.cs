@@ -14,8 +14,8 @@ namespace StockMarket.Core
             Date = date;
         }
 
-        public string Name { get; set; }
-        public DateTime Date { get; set; }
-        public decimal Value { get; set; }
+        public string Name { get; }
+        public DateTime Date { get; }
+        public decimal Value { get; }
     }
 }

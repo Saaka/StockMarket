@@ -31,11 +31,6 @@ namespace StockMarket.IntegrationTests
             Assert.Equal(latestStock.Date.TrimMilliseconds(), loadResult.StockValue.Date);
         }
 
-        private StockValue GetValidStockValue()
-        {
-            return new StockValue("test", 15.0m, DateTime.Now);
-        }
-
         private StockValue GetStockValue(string name, decimal value, DateTime date)
         {
             return new StockValue(name, value, date);
@@ -51,7 +46,7 @@ namespace StockMarket.IntegrationTests
             Directory.Delete(StoragePath, true);
         }
 
-        private string StoragePath { get; set; } = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Storage");
+        private string StoragePath { get; } = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Storage");
     }
 
     public static class DateTimeExtensions

@@ -24,7 +24,7 @@ namespace StockMarket.Core.StockValueProvider
         public async Task<StockValue> GetStockValue(string stockName)
         {
             var stockCsvData = await stockDataProvider.GetStockData(stockName);
-            var stockData = stockCsvData.Split(new[] { @"\r\n" }, StringSplitOptions.None)[1];            
+            var stockData = stockCsvData.Split(new[] { "\r\n" }, StringSplitOptions.None)[1];            
             var stockValue = valueParser.GetParsedValue(stockData);
 
             return new StockValue(stockName, stockValue, dateProvider.GetCurrentDateTime());

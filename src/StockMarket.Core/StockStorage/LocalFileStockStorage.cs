@@ -12,9 +12,11 @@ namespace StockMarket.Core.StockStorage
     public class LocalFileStockStorage : IStockStorage
     {
         private readonly IStockStorageParser storageParser;
+        private readonly string storagePath;
+
         public LocalFileStockStorage(IStockStorageParser storageParser)
         {
-            StoragePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Storage");
+            storagePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Storage");
             this.storageParser = storageParser;
         }
 
@@ -44,15 +46,13 @@ namespace StockMarket.Core.StockStorage
 
         private void CreateStoragePathIfNotExists()
         {
-            if (!Directory.Exists(StoragePath))
-                Directory.CreateDirectory(StoragePath);
+            if (!Directory.Exists(storagePath))
+                Directory.CreateDirectory(storagePath);
         }
 
         private string GetStockFilePath(string stockName)
         {
-            return Path.Combine(StoragePath, $"{stockName}.txt");
+            return Path.Combine(storagePath, $"{stockName}.txt");
         }
-
-        private string StoragePath { get; set; }
     }
 }

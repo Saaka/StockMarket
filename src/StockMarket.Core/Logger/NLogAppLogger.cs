@@ -22,7 +22,7 @@ namespace StockMarket.Core.Logger
 
         public void Error(Exception exception)
         {
-            logger.Error(exception.Message);
+            logger.Error(exception);
         }
 
         public void Info(string info)

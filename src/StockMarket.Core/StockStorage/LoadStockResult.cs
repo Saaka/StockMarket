@@ -18,7 +18,7 @@ namespace StockMarket.Core.StockStorage
             StockValue = stockValue;
         }
 
-        public bool ValueExists { get; set; }
-        public StockValue StockValue { get; set; }
+        public bool ValueExists { get; }
+        public StockValue StockValue { get; }
     }
 }

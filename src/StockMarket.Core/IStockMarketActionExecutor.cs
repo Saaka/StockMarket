@@ -7,6 +7,6 @@ namespace StockMarket.Core
 {
     public interface IStockMarketActionExecutor
     {
-        void RunStockMarket();
+        Task RunStockMarket();
     }
 }
