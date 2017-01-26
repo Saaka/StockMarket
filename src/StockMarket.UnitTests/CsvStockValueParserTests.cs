@@ -1,4 +1,4 @@
-﻿using StockMarket.Core.StockValue.StockValueParser;
+﻿using StockMarket.Core.StockValueProvider.StockValueParser;
 using System;
 using System.Collections.Generic;
 using System.Linq;

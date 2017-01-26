@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace StockMarket.Core.StockValue
+namespace StockMarket.Core.StockValueProvider
 {
     public interface IStockValueProvider
     {

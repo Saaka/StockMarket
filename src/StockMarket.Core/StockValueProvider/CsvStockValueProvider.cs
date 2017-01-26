@@ -1,12 +1,12 @@
 ﻿using StockMarket.Core.DateProvider;
 using StockMarket.Core.StockDataProvider;
-using StockMarket.Core.StockValue.StockValueParser;
+using StockMarket.Core.StockValueProvider.StockValueParser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StockMarket.Core.StockValue
+namespace StockMarket.Core.StockValueProvider
 {
     public class CsvStockValueProvider : IStockValueProvider
     {
