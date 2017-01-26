@@ -7,6 +7,6 @@ namespace StockMarket.Core.StockDataProvider
 {
     public interface IStockDataProvider
     {
-        Task<string> GetStockValue(string stockName);
+        Task<string> GetStockData(string stockName);
     }
 }

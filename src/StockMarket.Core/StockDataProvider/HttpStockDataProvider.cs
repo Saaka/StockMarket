@@ -16,7 +16,7 @@ namespace StockMarket.Core.StockDataProvider
             this.stockValidator = stockValidator;
         }
 
-        public async Task<string> GetStockValue(string stockName)
+        public async Task<string> GetStockData(string stockName)
         {
             using (var httpClient = new HttpClient())
             {

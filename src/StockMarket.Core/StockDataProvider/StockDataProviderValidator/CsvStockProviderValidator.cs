@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace StockMarket.Core.StockDataProvider.StockDataProviderValidator
 {
-    public class HttpStockProviderValidator : IStockDataProviderValidator
+    public class CsvStockProviderValidator : IStockDataProviderValidator
     {
         public void ValidateStock(string stockName, string result)
         {

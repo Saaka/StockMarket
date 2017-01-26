@@ -17,7 +17,7 @@ namespace StockMarket.IntegrationTests
         {
             IStockDataProvider stockProvider = CreateStockProvider();
 
-            var result = await stockProvider.GetStockValue(stockName);
+            var result = await stockProvider.GetStockData(stockName);
 
             Assert.True(true);
         }
@@ -31,13 +31,13 @@ namespace StockMarket.IntegrationTests
 
             await Assert.ThrowsAsync<StockProviderValidatorException>(async () =>
             {
-                var result = await stockProvider.GetStockValue(stockName);
+                var result = await stockProvider.GetStockData(stockName);
             });
         }
 
         private IStockDataProvider CreateStockProvider()
         {
-            return new HttpStockDataProvider(new HttpStockProviderValidator());
+            return new HttpStockDataProvider(new CsvStockProviderValidator());
         }
     }
 }
