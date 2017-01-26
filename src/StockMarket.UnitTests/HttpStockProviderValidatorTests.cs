@@ -1,4 +1,4 @@
-﻿using StockMarket.Core.StockProvider.StockProviderValidator;
+﻿using StockMarket.Core.StockDataProvider.StockDataProviderValidator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +47,7 @@ namespace StockMarket.UnitTests
             });
         }
 
-        private IStockProviderValidator CreateStockProviderValidator()
+        private IStockDataProviderValidator CreateStockProviderValidator()
         {
             return new HttpStockProviderValidator();
         }

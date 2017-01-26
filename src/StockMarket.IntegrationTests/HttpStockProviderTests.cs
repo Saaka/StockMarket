@@ -1,5 +1,5 @@
-﻿using StockMarket.Core.StockProvider;
-using StockMarket.Core.StockProvider.StockProviderValidator;
+﻿using StockMarket.Core.StockDataProvider;
+using StockMarket.Core.StockDataProvider.StockDataProviderValidator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace StockMarket.IntegrationTests
         [InlineData("WIG")]
         public async void ShouldGetValidResponse(string stockName)
         {
-            IStockProvider stockProvider = CreateStockProvider();
+            IStockDataProvider stockProvider = CreateStockProvider();
 
             var result = await stockProvider.GetStockValue(stockName);
 
@@ -27,7 +27,7 @@ namespace StockMarket.IntegrationTests
         [InlineData("DummyStock")]
         public async void ShouldThrowValidatorExceptionForInvalidStock(string stockName)
         {
-            IStockProvider stockProvider = CreateStockProvider();
+            IStockDataProvider stockProvider = CreateStockProvider();
 
             await Assert.ThrowsAsync<StockProviderValidatorException>(async () =>
             {
@@ -35,9 +35,9 @@ namespace StockMarket.IntegrationTests
             });
         }
 
-        private IStockProvider CreateStockProvider()
+        private IStockDataProvider CreateStockProvider()
         {
-            return new HttpStockProvider(new HttpStockProviderValidator());
+            return new HttpStockDataProvider(new HttpStockProviderValidator());
         }
     }
 }

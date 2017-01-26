@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StockMarket.Core.StockProvider.StockProviderValidator
+namespace StockMarket.Core.StockDataProvider.StockDataProviderValidator
 {
-    public class HttpStockProviderValidator : IStockProviderValidator
+    public class HttpStockProviderValidator : IStockDataProviderValidator
     {
         public void ValidateStock(string stockName, string result)
         {

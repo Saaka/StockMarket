@@ -1,17 +1,17 @@
-﻿using StockMarket.Core.StockProvider.StockProviderValidator;
+﻿using StockMarket.Core.StockDataProvider.StockDataProviderValidator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace StockMarket.Core.StockProvider
+namespace StockMarket.Core.StockDataProvider
 {
-    public class HttpStockProvider : IStockProvider
+    public class HttpStockDataProvider : IStockDataProvider
     {
-        private readonly IStockProviderValidator stockValidator;
+        private readonly IStockDataProviderValidator stockValidator;
 
-        public HttpStockProvider(IStockProviderValidator stockValidator)
+        public HttpStockDataProvider(IStockDataProviderValidator stockValidator)
         {
             this.stockValidator = stockValidator;
         }

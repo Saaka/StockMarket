@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StockMarket.Core.StockProvider.StockProviderValidator
+namespace StockMarket.Core.StockDataProvider.StockDataProviderValidator
 {
     public class StockProviderValidatorException : Exception
     {
