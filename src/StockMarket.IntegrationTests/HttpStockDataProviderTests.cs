@@ -8,14 +8,14 @@ using Xunit;
 
 namespace StockMarket.IntegrationTests
 {
-    public class HttpStockProviderTests
+    public class HttpStockDataProviderTests
     {
         [Theory]
         [InlineData("WIG20")]
         [InlineData("WIG")]
-        public async void ShouldGetValidResponse(string stockName)
+        public async Task ShouldGetValidResponse(string stockName)
         {
-            IStockDataProvider stockProvider = CreateStockProvider();
+            var stockProvider = CreateStockProvider();
 
             var result = await stockProvider.GetStockData(stockName);
 
@@ -25,9 +25,9 @@ namespace StockMarket.IntegrationTests
         [Theory]
         [InlineData("WIK20")]
         [InlineData("DummyStock")]
-        public async void ShouldThrowValidatorExceptionForInvalidStock(string stockName)
+        public async Task ShouldThrowValidatorExceptionForInvalidStock(string stockName)
         {
-            IStockDataProvider stockProvider = CreateStockProvider();
+            var stockProvider = CreateStockProvider();
 
             await Assert.ThrowsAsync<StockProviderValidatorException>(async () =>
             {

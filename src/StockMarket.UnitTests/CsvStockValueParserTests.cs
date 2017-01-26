@@ -19,7 +19,7 @@ namespace StockMarket.UnitTests
 
             Assert.Throws<StockValueParserException>(() =>
             {
-                decimal stockData = parser.GetParsedValue(data);
+                var stockData = parser.GetParsedValue(data);
             });
         }
 
@@ -32,7 +32,7 @@ namespace StockMarket.UnitTests
 
             Assert.Throws<StockValueParserException>(() =>
             {
-                decimal stockData = parser.GetParsedValue(data);
+                var stockData = parser.GetParsedValue(data);
             });
         }
 
@@ -45,7 +45,7 @@ namespace StockMarket.UnitTests
         {
             var parser = GetStockValueParser();
 
-            decimal stockData = parser.GetParsedValue(data);
+            var stockData = parser.GetParsedValue(data);
 
             Assert.Equal(stockData, expectedValue, 5);
         }
