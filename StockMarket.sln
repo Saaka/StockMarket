@@ -16,6 +16,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "StockMarket.UnitTests", "sr
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "StockMarket.Core", "src\StockMarket.Core\StockMarket.Core.xproj", "{B2B7189D-80AC-4CFE-9F09-4C06CC2AE7EC}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "StockMarket.IntegrationTests", "src\StockMarket.IntegrationTests\StockMarket.IntegrationTests.xproj", "{3E79A77E-EF6E-4B4A-912A-C1BA274E9218}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{B2B7189D-80AC-4CFE-9F09-4C06CC2AE7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2B7189D-80AC-4CFE-9F09-4C06CC2AE7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2B7189D-80AC-4CFE-9F09-4C06CC2AE7EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E79A77E-EF6E-4B4A-912A-C1BA274E9218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E79A77E-EF6E-4B4A-912A-C1BA274E9218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E79A77E-EF6E-4B4A-912A-C1BA274E9218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E79A77E-EF6E-4B4A-912A-C1BA274E9218}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,5 +48,6 @@ Global
 		{1AE274F3-5060-4B24-8044-716FDBC191EB} = {6A296E96-10B6-4BA4-B35D-4E677FD3F02E}
 		{4CDB5B82-3A92-49C6-80B9-2E54023E35A2} = {6A296E96-10B6-4BA4-B35D-4E677FD3F02E}
 		{B2B7189D-80AC-4CFE-9F09-4C06CC2AE7EC} = {6A296E96-10B6-4BA4-B35D-4E677FD3F02E}
+		{3E79A77E-EF6E-4B4A-912A-C1BA274E9218} = {6A296E96-10B6-4BA4-B35D-4E677FD3F02E}
 	EndGlobalSection
 EndGlobal
