@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StockMarket.Core.StockValueProvider
+namespace StockMarket.Core
 {
     public class StockValue
     {

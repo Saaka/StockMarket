@@ -7,5 +7,7 @@ namespace StockMarket.Core.StockStorage
 {
     public interface IStockStorage
     {
+        Task SaveStockValue(StockValue stock);
+        Task<LoadStockResult> LoadLastSavedValue(string stockName);
     }
 }
