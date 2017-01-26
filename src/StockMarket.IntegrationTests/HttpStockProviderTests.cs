@@ -10,14 +10,29 @@ namespace StockMarket.IntegrationTests
 {
     public class HttpStockProviderTests
     {
-        [Fact]
-        public async void ShouldGetValidResponse()
+        [Theory]
+        [InlineData("WIG20")]
+        [InlineData("WIG")]
+        public async void ShouldGetValidResponse(string stockName)
         {
             IStockProvider stockProvider = CreateStockProvider();
 
-            var result = await stockProvider.GetStockValue("WIG20");
+            var result = await stockProvider.GetStockValue(stockName);
 
             Assert.True(true);
+        }
+
+        [Theory]
+        [InlineData("WIK20")]
+        [InlineData("DummyStock")]
+        public async void ShouldThrowValidatorExceptionForInvalidStock(string stockName)
+        {
+            IStockProvider stockProvider = CreateStockProvider();
+
+            await Assert.ThrowsAsync<StockProviderValidatorException>(async () =>
+            {
+                var result = await stockProvider.GetStockValue(stockName);
+            });
         }
 
         private IStockProvider CreateStockProvider()

@@ -13,7 +13,7 @@ namespace StockMarket.UnitTests
         public void ShouldThrowExceptionForInvalidHeader()
         {
             var validator = CreateStockProviderValidator();
-            var invalidResult = "WrongColumnName,Data,Czas,Otwarcie,Najwyzszy,Najnizszy,Zamkniecie,Wolumen\r\nDummyStock,B/D,B/D,B/D,B/D,B/D,B/D,B/D";
+            var invalidResult = "WrongColumnName,Data,Czas,Otwarcie,Najwyzszy,Najnizszy,Zamkniecie,Wolumen\r\nDUMMYSTOCK,B/D,B/D,B/D,B/D,B/D,B/D,B/D";
 
             Assert.Throws<StockProviderValidatorException>(() =>
             {
@@ -25,7 +25,7 @@ namespace StockMarket.UnitTests
         public void ShouldThrowExceptionForInvalidValue()
         {
             var validator = CreateStockProviderValidator();
-            var invalidResult = "Symbol,Data,Czas,Otwarcie,Najwyzszy,Najnizszy,Zamkniecie,Wolumen\r\nDummyStock,B/D,B/D,B/D,B/D,B/D,B/D,B/D";
+            var invalidResult = "Symbol,Data,Czas,Otwarcie,Najwyzszy,Najnizszy,Zamkniecie,Wolumen\r\nDUMMYSTOCK,B/D,B/D,B/D,B/D,B/D,B/D,B/D";
 
             Assert.Throws<StockProviderValidatorException>(() =>
             {
@@ -35,7 +35,7 @@ namespace StockMarket.UnitTests
 
         [Theory]
         [InlineData("Symbol,Data,Czas,Otwarcie,Najwyzszy,Najnizszy,Zamkniecie,Wolumen")]
-        [InlineData("DummyStock,B/D,B/D,B/D,B/D,B/D,B/D,B/D")]
+        [InlineData("DUMMYSTOCK,B/D,B/D,B/D,B/D,B/D,B/D,B/D")]
         [InlineData("")]
         public void ShouldThrowExceptionForNoValues(string invalidResult)
         {

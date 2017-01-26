@@ -23,7 +23,7 @@ namespace StockMarket.Core.StockProvider.StockProviderValidator
 
         private string GetInvlaidStockValue(string stockName)
         {
-            return $"{stockName},B/D,B/D,B/D,B/D,B/D,B/D,B/D";
+            return $"{stockName.ToUpper()},B/D,B/D,B/D,B/D,B/D,B/D,B/D";
         }
 
         private string ValidHeader { get; } = "Symbol,Data,Czas,Otwarcie,Najwyzszy,Najnizszy,Zamkniecie,Wolumen";
