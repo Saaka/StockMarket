@@ -38,7 +38,7 @@ namespace StockMarket.Core
         {
             logger.Info("Stock market is running");
 
-            while(true)
+            while (true)
             {
                 logger.Info("Loading new configuration");
                 var config = configProvider.GetConfiguration();
@@ -48,7 +48,7 @@ namespace StockMarket.Core
                 await waitTask;
 
                 var result = await ExecuteStockMarketAction(config.Stocks);
-                if(result.IsSuccess)
+                if (result.IsSuccess)
                 {
                     logger.Info("Action succeded. Stock values updated");
                 }
@@ -62,48 +62,40 @@ namespace StockMarket.Core
 
         private async Task<StockMarketActionResult> ExecuteStockMarketAction(string[] stocks)
         {
-            try
+            foreach (var stockName in stocks)
             {
-                foreach (var stockName in stocks)
+                try
                 {
-                    try
-                    {
-                        logger.Info($"Loading data for {stockName}");
-                        bool saveValue = false;
-                        var newStockValue = await stockValueProvider.GetStockValue(stockName);
-                        var lastStockValue = await stockStorage.LoadLastSavedValue(stockName);
-                        if (!lastStockValue.ValueExists)
-                            saveValue = true;
-                        else if (actionResolver.ShouldSaveStock(newStockValue, lastStockValue.StockValue))
-                            saveValue = true;
+                    logger.Info($"Loading data for {stockName}");
+                    bool saveValue = false;
+                    var newStockValue = await stockValueProvider.GetStockValue(stockName);
+                    var lastStockValue = await stockStorage.LoadLastSavedValue(stockName);
+                    if (!lastStockValue.ValueExists)
+                        saveValue = true;
+                    else if (actionResolver.ShouldSaveStock(newStockValue, lastStockValue.StockValue))
+                        saveValue = true;
 
-                        if (saveValue)
-                        {
-                            logger.Info($"Saving value for {stockName}");
-                            await stockStorage.SaveStockValue(newStockValue);
-                            logger.Info($"Value for {stockName} saved");
-                        }
-                        else
-                            logger.Info($"No changes for {stockName}");
-                    }
-                    catch (Exception ex) when (ex is StockValueParserException || ex is StockProviderValidatorException || ex is StockStorageParserException)
+                    if (saveValue)
                     {
-                        logger.Error(ex);
+                        logger.Info($"Saving value for {stockName}");
+                        await stockStorage.SaveStockValue(newStockValue);
+                        logger.Info($"Value for {stockName} saved");
                     }
-                    catch (Exception ex)
-                    {
-                        logger.Error(ex);
-                        return new StockMarketActionResult(false, ex.Message);
-                    }
+                    else
+                        logger.Info($"No changes for {stockName}");
                 }
+                catch (Exception ex) when (ex is StockValueParserException || ex is StockProviderValidatorException || ex is StockStorageParserException)
+                {
+                    logger.Error(ex);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex);
+                    return new StockMarketActionResult(false, ex.Message);
+                }
+            }
 
-                return new StockMarketActionResult(true);
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex);
-                return new StockMarketActionResult(false, ex.Message);
-            }
+            return new StockMarketActionResult(true);
         }
     }
 }
