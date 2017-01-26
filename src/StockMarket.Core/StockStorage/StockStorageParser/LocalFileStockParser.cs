@@ -14,13 +14,13 @@ namespace StockMarket.Core.StockStorage.StockStorageParser
             decimal value;
 
             if (values.Length < 2)
-                throw new Exception($"Invalid {stockName} data: {stockData}");
+                throw new StockStorageParserException($"Invalid {stockName} data: {stockData}");
 
             if (!DateTime.TryParse(values[0], out date))
-                throw new Exception($"Can't load {stockName} date from: {values[0]}");
+                throw new StockStorageParserException($"Can't load {stockName} date from: {values[0]}");
 
             if (!decimal.TryParse(values[1], out value))
-                throw new Exception($"Can't load {stockName} value from: {values[1]}");
+                throw new StockStorageParserException($"Can't load {stockName} value from: {values[1]}");
 
             return new StockValue(stockName, value, date);
         }

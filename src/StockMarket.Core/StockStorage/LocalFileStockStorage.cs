@@ -20,7 +20,7 @@ namespace StockMarket.Core.StockStorage
 
         public async Task SaveStockValue(StockValue stock)
         {
-            CreatePath();
+            CreateStoragePathIfNotExists();
             using (var writer = File.AppendText(GetStockFilePath(stock.Name)))
             {
                 await writer.WriteLineAsync($"{stock.Date};{stock.Value}");
@@ -42,7 +42,7 @@ namespace StockMarket.Core.StockStorage
             }
         }
 
-        private void CreatePath()
+        private void CreateStoragePathIfNotExists()
         {
             if (!Directory.Exists(StoragePath))
                 Directory.CreateDirectory(StoragePath);
